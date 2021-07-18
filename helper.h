@@ -2,6 +2,7 @@
 
 #include "globals.h"
 
+FILE * pFile;
 typedef char ASN1char_t;
 typedef struct ASN1encoding_s* ASN1encoding_t;
 
